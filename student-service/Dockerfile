@@ -4,5 +4,5 @@ EXPOSE 8080
 WORKDIR "/student-service"
 VOLUME "/student-service/config"
 
-COPY ./build/libs/student-service-0.0.1.jar student-service-0.0.1.jar
+COPY ./student-service/build/libs/student-service-0.0.1.jar student-service-0.0.1.jar
 ENTRYPOINT ["java","-jar","student-service-0.0.1.jar","--spring.config.location=file:./config/application.yml"]
