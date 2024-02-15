@@ -24,3 +24,16 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew clean build -x test
+
+      - name: Login to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      - name: Build image of student-service
+        run: docker build ./student-service
+
+      - name: Build image of teacher-service
+        run: docker build ./teacher-service
