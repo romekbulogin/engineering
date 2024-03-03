@@ -2,6 +2,7 @@ package ru.edu.teacherservice.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +15,8 @@ public class TeacherEntity {
     private String firstname;
     private String surname;
     private Integer experience;
+    @ManyToMany
+    private List<AcademicSubjectEntity> academicSubjects;
 
     public UUID getId() {
         return id;
@@ -53,5 +56,13 @@ public class TeacherEntity {
 
     public void setExperience(Integer experience) {
         this.experience = experience;
+    }
+
+    public List<AcademicSubjectEntity> getAcademicSubjects() {
+        return academicSubjects;
+    }
+
+    public void setAcademicSubject(List<AcademicSubjectEntity> academicSubjects) {
+        this.academicSubjects = academicSubjects;
     }
 }

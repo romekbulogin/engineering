@@ -2,6 +2,7 @@ package ru.edu.teacherservice.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,6 +12,8 @@ public class AcademicSubjectEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
+    @ManyToMany
+    private List<TeacherEntity> teachers;
 
     public UUID getId() {
         return id;
@@ -26,5 +29,13 @@ public class AcademicSubjectEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<TeacherEntity> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeacher(List<TeacherEntity> teachers) {
+        this.teachers = teachers;
     }
 }
